@@ -1,18 +1,33 @@
-// Select the theme button
-const themeBtn = document.getElementById("theme-btn");
 
-// Check if the button is found
-if (themeBtn) {
-  // Add click event listener
-  themeBtn.addEventListener("click", function(event) {
-      // Generate random RGB values between 0 and 255
-      const num1 = Math.floor(Math.random() * 256);  // Random number between 0 and 255
-      const num2 = Math.floor(Math.random() * 256);  // Random number between 0 and 255
-      const num3 = Math.floor(Math.random() * 256);  // Random number between 0 and 255
 
-      // Set the background color to the generated RGB values
-      document.body.style.backgroundColor = `rgb(${num1}, ${num2}, ${num3})`;
-  });
-} else {
-  console.log("Theme button not found!");
-};
+
+// button and activity log
+
+document.getElementById("buttonContainer").addEventListener("click", function (event) {
+  if (event.target.tagName.toLowerCase() === "button") {
+      alert("Board updated successfully.");
+
+      
+      let taskCount = document.getElementById("taskCount"); 
+
+      let currentTaskCount = parseInt(taskCount.textContent);
+
+      
+     
+      if (currentTaskCount > 0) {
+        taskCount.textContent = currentTaskCount - 1;
+    }
+
+      
+      let completedCount = document.getElementById("completedCount");
+      completedCount.textContent = parseInt(completedCount.textContent) + 1;
+
+      
+      let log = document.getElementById("activityLog");
+      
+      let entry = document.createElement("div");
+      entry.textContent = `You have Complete The Task at ${new Date().toLocaleTimeString()}`;
+      log.appendChild(entry);
+  }
+});
+
