@@ -7,6 +7,10 @@ document.getElementById("buttonContainer").addEventListener("click", function (e
   if (event.target.tagName.toLowerCase() === "button") {
       alert("Board updated successfully.");
 
+      event.target.disabled = true;
+      event.target.classList.remove("bg-blue-500");
+      event.target.classList.add("bg-gray-400");
+
       
       let taskCount = document.getElementById("taskCount"); 
 
@@ -31,3 +35,18 @@ document.getElementById("buttonContainer").addEventListener("click", function (e
   }
 });
 
+
+// Clear History
+document.getElementById("clear")
+.addEventListener("click", function() {
+  document.getElementById("activityLog")
+  .innerHTML = "";
+});
+
+
+// discover new page
+
+document.getElementById("discoverBtn")
+.addEventListener("click", function() {
+  window.location.href = "back.html";
+});
